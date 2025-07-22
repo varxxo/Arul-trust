@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* Aruleduation Trust Design System - Professional, trustworthy, educational theme
 All colors MUST be HSL.
 */
 
@@ -17,24 +17,44 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Trust primary colors - Deep blue for trust and education */
+    --primary: 213 94% 18%;
+    --primary-foreground: 0 0% 98%;
+    --primary-light: 213 75% 35%;
+    --primary-glow: 213 65% 45%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Educational secondary colors - Warm orange for inspiration */
+    --secondary: 28 85% 55%;
+    --secondary-foreground: 0 0% 98%;
+    --secondary-light: 28 75% 65%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 142 76% 36%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 213 94% 18%;
+
+    /* Trust-specific design tokens */
+    --trust-navy: 221 39% 11%;
+    --trust-gold: 43 89% 70%;
+    --trust-green: 142 76% 36%;
+
+    /* Gradients for impact and inspiration */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
+    --gradient-impact: linear-gradient(45deg, hsl(var(--secondary)), hsl(var(--accent)));
+    --gradient-trust: linear-gradient(180deg, hsl(var(--trust-navy)), hsl(var(--primary)));
+
+    /* Shadows for depth and professionalism */
+    --shadow-elegant: 0 10px 40px -10px hsl(var(--primary) / 0.2);
+    --shadow-card: 0 4px 20px -2px hsl(var(--primary) / 0.1);
+    --shadow-glow: 0 0 30px hsl(var(--trust-gold) / 0.3);
 
     --radius: 0.5rem;
 
@@ -56,33 +76,48 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 221 39% 11%;
     --foreground: 210 40% 98%;
 
-    --card: 222.2 84% 4.9%;
+    --card: 221 39% 15%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222.2 84% 4.9%;
+    --popover: 221 39% 15%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 213 75% 65%;
+    --primary-foreground: 221 39% 11%;
+    --primary-light: 213 65% 75%;
+    --primary-glow: 213 55% 85%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 28 75% 65%;
+    --secondary-foreground: 221 39% 11%;
+    --secondary-light: 28 65% 75%;
 
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 142 65% 55%;
+    --accent-foreground: 221 39% 11%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --ring: 213 75% 65%;
+
+    --trust-navy: 221 39% 11%;
+    --trust-gold: 43 79% 80%;
+    --trust-green: 142 65% 55%;
+
+    --gradient-hero: linear-gradient(135deg, hsl(var(--trust-navy)), hsl(var(--primary)));
+    --gradient-impact: linear-gradient(45deg, hsl(var(--secondary)), hsl(var(--accent)));
+    --gradient-trust: linear-gradient(180deg, hsl(var(--trust-navy)), hsl(var(--primary-light)));
+
+    --shadow-elegant: 0 10px 40px -10px hsl(0 0% 0% / 0.3);
+    --shadow-card: 0 4px 20px -2px hsl(0 0% 0% / 0.2);
+    --shadow-glow: 0 0 30px hsl(var(--trust-gold) / 0.2);
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -100,6 +135,47 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+
+  .hero-text {
+    @apply bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent;
+  }
+
+  .impact-gradient {
+    background: var(--gradient-impact);
+  }
+
+  .trust-gradient {
+    background: var(--gradient-trust);
+  }
+
+  .card-shadow {
+    box-shadow: var(--shadow-card);
+  }
+
+  .elegant-shadow {
+    box-shadow: var(--shadow-elegant);
+  }
+
+  .glow-effect {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .scroll-smooth {
+    scroll-behavior: smooth;
   }
 }
