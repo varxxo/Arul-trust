@@ -9,6 +9,7 @@ import OurWork from "./pages/OurWork";
 import GetInvolved from "./pages/GetInvolved";
 import Resources from "./pages/Resources";
 import Contact from "./pages/Contact";
+import Donate from "./pages/Donate";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,10 +24,11 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/our-work" element={<OurWork />} />
-          <Route path="/get-involved" element={<GetInvolved />} />
-          <Route path="/resources" element={<Resources />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<NotFound />} />
+            <Route path="/get-involved" element={<GetInvolved />} />
+            <Route path="/resources" element={<Resources />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/donate" element={<Donate />} />
+            <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
