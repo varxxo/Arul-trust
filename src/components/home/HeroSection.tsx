@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Heart, Users, BookOpen, Award } from "lucide-react";
+import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-education.jpg";
 
 const HeroSection = () => {
@@ -39,18 +40,22 @@ const HeroSection = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="hero" size="xl" className="group">
-                <Heart className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
-                Donate Now
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button variant="outline" size="xl" className="border-white/30 text-white hover:bg-white/10">
-                Learn More About Our Work
-              </Button>
+              <Link to="/get-involved">
+                <Button variant="hero" size="xl" className="group w-full sm:w-auto">
+                  <Heart className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
+                  Donate Now
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+              <Link to="/our-work">
+                <Button variant="outline" size="xl" className="border-white/30 text-white hover:bg-white/10 w-full sm:w-auto">
+                  Learn More About Our Work
+                </Button>
+              </Link>
             </div>
 
             {/* Impact Stats */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-8">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 pt-8">
               <div className="text-center space-y-2">
                 <div className="w-12 h-12 bg-trust-gold/20 rounded-lg flex items-center justify-center mx-auto">
                   <Users className="w-6 h-6 text-trust-gold" />

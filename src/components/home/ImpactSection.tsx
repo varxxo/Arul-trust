@@ -56,7 +56,7 @@ const ImpactSection = () => {
         </div>
 
         {/* Impact Cards Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-20">
           {impactAreas.map((area, index) => (
             <Card key={index} className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-0 card-shadow">
               <CardContent className="p-8 text-center">
@@ -72,7 +72,7 @@ const ImpactSection = () => {
         </div>
 
         {/* Feature Stories Grid */}
-        <div className="grid lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 mb-16">
           {/* Main Story */}
           <div className="lg:col-span-2">
             <Card className="overflow-hidden group cursor-pointer hover:shadow-xl transition-all duration-300">
@@ -140,7 +140,7 @@ const ImpactSection = () => {
             From the mountains of Himachal Pradesh to the coastal regions of Kerala, 
             our educational initiatives span across 15 states, touching lives in both urban and rural communities.
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
             <div>
               <div className="text-3xl font-bold text-trust-gold">15</div>
               <div className="text-sm text-primary-foreground/80">States Covered</div>

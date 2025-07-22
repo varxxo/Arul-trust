@@ -82,10 +82,12 @@ const Header = () => {
 
             {/* Donate Button & Mobile Menu */}
             <div className="flex items-center space-x-4">
-              <Button variant="donate" size="lg" className="hidden md:flex">
-                <Heart className="w-4 h-4 mr-2" />
-                Donate Now
-              </Button>
+              <Link to="/get-involved">
+                <Button variant="donate" size="lg" className="hidden md:flex">
+                  <Heart className="w-4 h-4 mr-2" />
+                  Donate Now
+                </Button>
+              </Link>
 
               {/* Mobile Menu */}
               <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -119,10 +121,12 @@ const Header = () => {
                       </Link>
                     ))}
                     
-                    <Button variant="donate" size="lg" className="mt-6">
-                      <Heart className="w-4 h-4 mr-2" />
-                      Donate Now
-                    </Button>
+                    <Link to="/get-involved">
+                      <Button variant="donate" size="lg" className="mt-6 w-full">
+                        <Heart className="w-4 h-4 mr-2" />
+                        Donate Now
+                      </Button>
+                    </Link>
                   </div>
                 </SheetContent>
               </Sheet>

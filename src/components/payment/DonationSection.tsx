@@ -66,7 +66,7 @@ const DonationSection = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
           {/* Donation Form */}
           <div className="lg:col-span-2">
             <Card className="card-shadow border-0">
@@ -82,7 +82,7 @@ const DonationSection = () => {
                   <Label className="text-base font-semibold text-primary mb-4 block">
                     Donation Type
                   </Label>
-                  <RadioGroup value={donationType} onValueChange={setDonationType} className="grid grid-cols-2 gap-4">
+                  <RadioGroup value={donationType} onValueChange={setDonationType} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="flex items-center space-x-2 border rounded-lg p-4 hover:bg-gray-50 cursor-pointer">
                       <RadioGroupItem value="one-time" id="one-time" />
                       <Label htmlFor="one-time" className="cursor-pointer">One-time Donation</Label>
@@ -99,7 +99,7 @@ const DonationSection = () => {
                   <Label className="text-base font-semibold text-primary mb-4 block">
                     Select Amount
                   </Label>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-4">
                     {predefinedAmounts.map((amount) => (
                       <button
                         key={amount.value}

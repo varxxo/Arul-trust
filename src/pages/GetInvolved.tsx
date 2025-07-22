@@ -111,11 +111,11 @@ const GetInvolved = () => {
               Every contribution, big or small, makes a difference.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="hero" size="xl">
+              <Button variant="hero" size="xl" className="w-full sm:w-auto">
                 <Heart className="w-5 h-5 mr-2" />
                 Donate Now
               </Button>
-              <Button variant="outline" size="xl" className="border-white/30 text-white hover:bg-white/10">
+              <Button variant="outline" size="xl" className="border-white/30 text-white hover:bg-white/10 w-full sm:w-auto">
                 Become a Volunteer
               </Button>
             </div>
