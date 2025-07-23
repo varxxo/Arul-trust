@@ -165,7 +165,11 @@ const GetInvolved = () => {
                 <p className="text-muted-foreground leading-relaxed mb-6">
                   Contribute your time and skills to mentor students and support our educational initiatives.
                 </p>
-                <Button variant="default" className="w-full">
+                <Button 
+                  variant="default" 
+                  className="w-full"
+                  onClick={() => document.getElementById('volunteer-section')?.scrollIntoView({ behavior: 'smooth' })}
+                >
                   Join as Volunteer
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
@@ -181,7 +185,11 @@ const GetInvolved = () => {
                 <p className="text-muted-foreground leading-relaxed mb-6">
                   Collaborate with us through corporate partnerships, institutional alliances, or government initiatives.
                 </p>
-                <Button variant="impact" className="w-full">
+                <Button 
+                  variant="impact" 
+                  className="w-full"
+                  onClick={() => document.getElementById('partnership-section')?.scrollIntoView({ behavior: 'smooth' })}
+                >
                   Explore Partnerships
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
@@ -192,7 +200,7 @@ const GetInvolved = () => {
       </section>
 
       {/* Volunteer Opportunities */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+      <section id="volunteer-section" className="py-20 bg-gradient-to-b from-gray-50 to-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-primary mb-6">Volunteer Opportunities</h2>
@@ -312,7 +320,7 @@ const GetInvolved = () => {
       </section>
 
       {/* Partnership Opportunities */}
-      <section className="py-20 bg-white">
+      <section id="partnership-section" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-primary mb-6">Partnership Opportunities</h2>
