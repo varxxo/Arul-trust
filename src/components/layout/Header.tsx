@@ -82,7 +82,7 @@ const Header = () => {
 
             {/* Donate Button & Mobile Menu */}
             <div className="flex items-center space-x-4">
-              <Link to="/get-involved">
+              <Link to="/donate">
                 <Button variant="donate" size="lg" className="hidden md:flex">
                   <Heart className="w-4 h-4 mr-2" />
                   Donate Now
@@ -121,7 +121,7 @@ const Header = () => {
                       </Link>
                     ))}
                     
-                    <Link to="/get-involved">
+                    <Link to="/donate">
                       <Button variant="donate" size="lg" className="mt-6 w-full">
                         <Heart className="w-4 h-4 mr-2" />
                         Donate Now

@@ -114,9 +114,11 @@ const Footer = () => {
                 </div>
               </div>
               
-              <Button variant="donate" size="lg" className="mt-6 w-full">
-                <Heart className="w-4 h-4 mr-2" />
-                Make a Donation
+              <Button variant="donate" size="lg" className="mt-6 w-full" asChild>
+                <Link to="/donate">
+                  <Heart className="w-4 h-4 mr-2" />
+                  Make a Donation
+                </Link>
               </Button>
             </div>
           </div>
