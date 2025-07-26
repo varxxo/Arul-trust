@@ -10,6 +10,9 @@ import GetInvolved from "./pages/GetInvolved";
 import Resources from "./pages/Resources";
 import Contact from "./pages/Contact";
 import Donate from "./pages/Donate";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
+import Transparency from "./pages/Transparency";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,11 +27,17 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/our-work" element={<OurWork />} />
-            <Route path="/get-involved" element={<GetInvolved />} />
-            <Route path="/resources" element={<Resources />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/donate" element={<Donate />} />
-            <Route path="*" element={<NotFound />} />
+          <Route path="/our-work/*" element={<OurWork />} />
+          <Route path="/get-involved" element={<GetInvolved />} />
+          <Route path="/get-involved/*" element={<GetInvolved />} />
+          <Route path="/resources" element={<Resources />} />
+          <Route path="/resources/*" element={<Resources />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/donate" element={<Donate />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/transparency" element={<Transparency />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
