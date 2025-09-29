@@ -9,8 +9,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Heart, Shield, CreditCard, Users } from "lucide-react";
+import { useSEO } from "@/lib/seo";
 
 const Donate = () => {
+  useSEO({ title: 'Donate', description: 'Support ArulEducation Trust with a donation to help students and programs.', image: '/assets/hero-education.jpg' });
   const [donationType, setDonationType] = useState("one-time");
   const [amount, setAmount] = useState("");
   const [customAmount, setCustomAmount] = useState("");

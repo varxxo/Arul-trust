@@ -18,8 +18,10 @@ import {
   MessageSquare,
   Heart
 } from "lucide-react";
+import { useSEO } from "@/lib/seo";
 
 const Contact = () => {
+  useSEO({ title: 'Contact Us', description: 'Contact Arul Education Trust for partnerships, donations, and support.' });
   const contactInfo = [
     {
       icon: MapPin,

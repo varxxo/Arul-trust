@@ -14,6 +14,7 @@ const DonationSection = () => {
   const [donationType, setDonationType] = useState("one-time");
   const [paymentMethod, setPaymentMethod] = useState("card");
   const { toast } = useToast();
+  const [processing, setProcessing] = useState(false);
 
   const predefinedAmounts = [
     { value: "500", label: "₹500", impact: "Supports 1 student's books for a month" },
@@ -24,33 +25,99 @@ const DonationSection = () => {
     { value: "custom", label: "Custom Amount", impact: "Every rupee makes a difference" }
   ];
 
-  const handleDonate = () => {
-    const amount = donationAmount === "custom" ? customAmount : donationAmount;
-    if (!amount || amount === "0") {
-      toast({
-        title: "Invalid Amount",
-        description: "Please enter a valid donation amount.",
-        variant: "destructive"
+  const loadRazorpayScript = () => {
+    return new Promise<boolean>((resolve) => {
+      const existing = document.querySelector(`script[src="https://checkout.razorpay.com/v1/checkout.js"]`);
+      if (existing) return resolve(true);
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      script.onload = () => resolve(true);
+      script.onerror = () => resolve(false);
+      document.body.appendChild(script);
+    });
+  };
+
+  const handleDonate = async () => {
+    try {
+      setProcessing(true);
+      const amountStr = donationAmount === "custom" ? customAmount : donationAmount;
+      if (!amountStr || amountStr === "0") {
+        toast({
+          title: "Invalid Amount",
+          description: "Please enter a valid donation amount.",
+          variant: "destructive"
+        });
+        setProcessing(false);
+        return;
+      }
+
+      const amountNumber = Math.max(1, Number(amountStr));
+      const amountPaise = Math.round(amountNumber * 100); // Razorpay expects amount in paise
+
+      // 1) Create order on our backend
+      const resp = await fetch('/api/razorpay/order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ amount: amountPaise, currency: 'INR', donationType, paymentMethod })
       });
-      return;
+
+      if (!resp.ok) {
+        const err = await resp.text();
+        toast({ title: 'Payment Error', description: err || 'Failed to create payment order', variant: 'destructive' });
+        setProcessing(false);
+        return;
+      }
+
+      const { orderId, amount: orderAmount, currency, keyId } = await resp.json();
+
+      const ok = await loadRazorpayScript();
+      if (!ok) {
+        toast({ title: 'Payment Error', description: 'Failed to load Razorpay SDK', variant: 'destructive' });
+        setProcessing(false);
+        return;
+      }
+
+      const options = {
+        key: keyId,
+        amount: orderAmount,
+        currency: currency || 'INR',
+        name: 'Arul Trust',
+        description: 'Donation',
+        order_id: orderId,
+        handler: async (response: any) => {
+          // response: { razorpay_payment_id, razorpay_order_id, razorpay_signature }
+          try {
+            const verify = await fetch('/api/razorpay/verify', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(response)
+            });
+
+            if (!verify.ok) {
+              const text = await verify.text();
+              toast({ title: 'Verification Failed', description: text || 'Payment could not be verified', variant: 'destructive' });
+            } else {
+              toast({ title: 'Thank You!', description: `Your donation of ₹${amountNumber} was successful.` });
+            }
+          } catch (err) {
+            toast({ title: 'Verification Error', description: 'Could not verify payment. We will contact you if needed.', variant: 'destructive' });
+          }
+        },
+        prefill: {
+          name: undefined,
+          email: undefined
+        },
+        theme: { color: '#2563eb' }
+      } as any;
+
+      const rzp = new (window as any).Razorpay(options);
+      rzp.open();
+    } catch (error) {
+      console.error('Donation flow error', error);
+      toast({ title: 'Donation Error', description: 'Something went wrong while processing the donation', variant: 'destructive' });
+    } finally {
+      setProcessing(false);
     }
-
-    // Here you would integrate with your payment gateway
-    // For now, we'll show a success message
-    toast({
-      title: "Thank You for Your Donation!",
-      description: `Your ${donationType} donation of ₹${amount} will make a real difference in students' lives.`,
-    });
-
-    // In a real implementation, you would:
-    // 1. Redirect to Stripe/Razorpay/PayU checkout
-    // 2. Handle the payment response
-    // 3. Update your database
-    console.log("Processing donation:", {
-      amount,
-      type: donationType,
-      method: paymentMethod
-    });
   };
 
   return (

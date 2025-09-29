@@ -76,6 +76,8 @@ const Footer = () => {
                 <li><Link to="/our-work/digital-literacy" className="text-gray-300 hover:text-white transition-colors">Digital Literacy</Link></li>
                 <li><Link to="/our-work/skill-development" className="text-gray-300 hover:text-white transition-colors">Skill Development</Link></li>
                 <li><Link to="/resources/reports" className="text-gray-300 hover:text-white transition-colors">Annual Reports</Link></li>
+                <li><Link to="/shipping" className="text-gray-300 hover:text-white transition-colors">Shipping</Link></li>
+                <li><Link to="/cancellation-refunds" className="text-gray-300 hover:text-white transition-colors">Cancellation & Refunds</Link></li>
               </ul>
             </div>
 
@@ -136,6 +138,8 @@ const Footer = () => {
               <Link to="/privacy" className="text-gray-300 hover:text-white transition-colors">Privacy Policy</Link>
               <Link to="/terms" className="text-gray-300 hover:text-white transition-colors">Terms of Service</Link>
               <Link to="/transparency" className="text-gray-300 hover:text-white transition-colors">Transparency</Link>
+              <Link to="/shipping" className="text-gray-300 hover:text-white transition-colors">Shipping</Link>
+              <Link to="/cancellation-refunds" className="text-gray-300 hover:text-white transition-colors">Cancellation & Refunds</Link>
             </div>
           </div>
         </div>

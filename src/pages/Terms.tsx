@@ -1,7 +1,9 @@
 import Layout from "@/components/layout/Layout";
+import { useSEO } from "@/lib/seo";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const Terms = () => {
+  useSEO({ title: 'Terms of Service', description: 'Terms and conditions for using ArulEducation Trust services.' });
   return (
     <Layout>
       <div className="container mx-auto px-4 py-16">
